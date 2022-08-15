@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState, createContext } from "react";
+import styled from "styled-components";
+import axios from "axios";
+import Header from "./components/Header";
+import Practice from "./pages/Practice";
+import Rank from "./pages/Rank";
 
-function App() {
+// Styled Components
+const Container = styled.div``;
+
+export const ContextProgress = createContext();
+export const ContextData = createContext();
+
+const App = () => {
+  const [data, setData] = useState([{}, {}, {}, {}, {}, {}, {}, {}, {}, {}]);
+
+  const [question, setQuestion] = useState({});
+
+  const [questionDone, setQuestionDone] = useState(0);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container>
+      <ContextProgress.Provider value={questionDone}>
+        <ContextData.Provider value={question}>
+          <Header />
+          {data.length !== 0 ? <Practice /> : <Rank />}
+        </ContextData.Provider>
+      </ContextProgress.Provider>
+    </Container>
   );
-}
+};
 
 export default App;
