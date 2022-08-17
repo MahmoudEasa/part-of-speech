@@ -1,18 +1,42 @@
 # Part of Speech
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This app is an interactive activity that helps the students practice categorizing a set of words according to their part of speech.
 
-## Available Scripts
+This app was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-In the project directory, you can run:
+## I Used
 
+* React.js, ContextApi, node.js, and Express.js
+* Axios, react-toastify, and styled-components
+
+## To run the app, go to the terminal:
+
+1- Clone The repo
+   * `git clone https://github.com/MahmoudEasa/part-of-speech.git`
+2- Go to the server directory
+   * `cd part-of-speech/server`
+   * `npm install`
+3- Run the server
+   * `npm start or yarn start`
+4- In a new terminal Go to the client directory
+   * `cd part-of-speech/client`
+   * `npm install`
+5- Run the client
+   * `npm start or yarn start`
+
+## To ues the app:
 ### `npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### The Express App (server side) has:
+
+`words endpoint:` provides an endpoint that returns a list of 10 objects selected randomly from the "wordsList". The array includes at least 1 adjective, 1 adverb, 1 noun, and 1 verb.
+
+`rank endpoint:` provides an endpoint that takes the final score in the request body, and responds back with the rank% rounded to the nearest hundredth.
+
+
 
 ### `npm test`
 
