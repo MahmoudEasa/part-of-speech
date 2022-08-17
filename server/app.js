@@ -2,16 +2,7 @@ const testData = require("./TestData.json");
 const express = require("express");
 const app = express();
 const cors = require("cors");
-//
-//
 
-const path = require("path");
-const http = require("http");
-const server = http.createServer(app);
-app.use(express.static(path.join(__dirname, "public")));
-
-//
-//
 app.use(express.json());
 app.use(cors());
 
