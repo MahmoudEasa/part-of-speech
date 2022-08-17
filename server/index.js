@@ -19,6 +19,11 @@ app.listen(port, () => {
 // New
 app.use(express.static(path.join(__dirname + "/public")));
 
+app.get("*", (req, rse) => {
+  rse.sendFile(path.resolve(__dirname + "/public/index.html"));
+});
+// New
+
 //Get Data
 // Sort pos
 const adjective = testData.wordList.filter((data) => data.pos === "adjective");
