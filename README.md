@@ -12,15 +12,15 @@ This app was bootstrapped with [Create React App](https://github.com/facebook/cr
 ## To run the app, go to the terminal:
 
 1- Clone The repo
-   * `git clone https://github.com/MahmoudEasa/part-of-speech.git`
+   * `git clone https://github.com/MahmoudEasa/part-of-speech.git`\
 2- Go to the server directory
    * `cd part-of-speech/server`
-   * `npm install`
+   * `npm install`\
 3- Run the server
-   * `npm start or yarn start`
+   * `npm start or yarn start`\
 4- In a new terminal Go to the client directory
    * `cd part-of-speech/client`
-   * `npm install`
+   * `npm install`\
 5- Run the client
    * `npm start or yarn start`
 
