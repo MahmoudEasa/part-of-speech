@@ -1,9 +1,11 @@
 import styled from "styled-components";
+import { Mobile } from "../responsive/Responsive";
 import Button from "./Button";
 import ButtonQuiz from "./ButtonQuiz";
 import ProgressBar from "./ProgressBar";
 import Quiz from "./Quiz";
 
+// Start Styled Components
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -15,6 +17,7 @@ const Container = styled.div`
   height: 70vh;
   box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.1);
   position: relative;
+  ${Mobile({ margin: "20px 0" })}
 
   &::before {
     content: "?";
@@ -31,6 +34,7 @@ const Container = styled.div`
     color: #ffffff;
     font-weight: bold;
     font-size: 25px;
+    ${Mobile({ display: "none" })}
   }
 `;
 
@@ -44,26 +48,36 @@ const Hr = styled.hr`
   border: none;
   background-color: lightgray;
   height: 2px;
+  ${Mobile({ display: "none" })}
 `;
+// End Styled Components
 
 const HomeContainer = (props) => {
   return (
     <Container practice={props.practice}>
+      {/* Practice Page */}
       {props.practice ? (
         <>
           <ProgressBar />
           <Hr />
+          {/* If {Practice} Show Practice Data {Else} Show Rank Data */}
           <Quiz practice />
           <ButtonQuiz />
         </>
       ) : (
+        // Rank Page
         <>
           <ProgressBar />
           <Hr />
           <Quiz />
           <Hr />
           <ContainerBtn>
-            <Button radiusNums="20px" value="Try Again" next />
+            <Button
+              bgColor="#29a29e"
+              radiusNums="20px"
+              value="Try Again"
+              next
+            />
           </ContainerBtn>
         </>
       )}

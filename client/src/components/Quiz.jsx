@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import { useContext } from "react";
-import { ContextData } from "../App";
+import { ContextData, ContextProgress, Rank } from "../ContextApi";
 
+// Start Styled Components
 const Container = styled.div`
   padding: 20px 50px 0;
   text-align: center;
@@ -23,18 +24,27 @@ const H3 = styled.h3`
   color: #44bdb9;
   margin: 20px 0;
 `;
+// End Styled Components
 
 const Quiz = (props) => {
   const data = useContext(ContextData);
+  const questionNumber = useContext(ContextProgress);
+  const rank = useContext(Rank);
   return (
     <Container>
-      <P>{props.practice && "Question 1 / 10"}</P>
+      {props.practice && <P>{`Question ${questionNumber + 1} / 10`}</P>}
       <H1>
         {props.practice
-          ? "What is categorizing the word according to their part of speech?"
+          ? "What is categorizing the word?"
           : "Questions completed"}
       </H1>
-      <H3>{props.practice ? `${data.word}` : `Your Rank Is: ${5}`}</H3>
+      <H3>
+        {props.practice
+          ? data.word
+            ? `${data.word}`
+            : "Loading..."
+          : `Your Rank Is: ${rank ? rank : "Loading..."}%`}
+      </H3>
     </Container>
   );
 };

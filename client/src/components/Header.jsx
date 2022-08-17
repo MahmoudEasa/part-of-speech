@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+// Start Styled Components
 const Container = styled.div`
   background-color: #fff;
   padding: 20px;
@@ -11,12 +12,15 @@ const Container = styled.div`
 
 const Img = styled.img`
   width: 150px;
+  cursor: pointer;
 `;
+// Start Styled Components
 
 const Header = () => {
   return (
     <Container>
       <Img
+        onClick={() => window.location.reload()}
         src="https://www.tribepost.co.uk/wp-content/uploads/2018/06/Nagwa-Logo.png"
         alt="logo"
       />

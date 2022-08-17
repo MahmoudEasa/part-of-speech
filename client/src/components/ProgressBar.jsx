@@ -1,7 +1,9 @@
 import { useContext } from "react";
 import styled from "styled-components";
-import { ContextProgress } from "../App";
+import { ContextProgress } from "../ContextApi";
+import { Mobile } from "../responsive/Responsive";
 
+// Start Styled Components
 const Container = styled.div`
   background-color: lightgray;
   margin: 20px;
@@ -13,6 +15,7 @@ const Container = styled.div`
   position: relative;
   gap: 9%;
   padding: 0 20px;
+  ${Mobile({ display: "none" })}
 `;
 
 const ProgressPoint = styled.span`
@@ -32,18 +35,18 @@ const Progress = styled.span`
   background-color: #2c8784;
   border-radius: 16px;
 `;
-
-const progrssLenght = [];
-for (let i = 0; i < 10; i++) {
-  progrssLenght.push(<ProgressPoint key={i} />);
-}
+// End Styled Components
 
 const ProgressBar = () => {
+  // Increase the progress display with the increase in the number of answers
   const progressNumber = useContext(ContextProgress);
 
+  const num = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
   return (
     <Container>
-      {progrssLenght}
+      {num.map((n, i) => (
+        <ProgressPoint key={i} />
+      ))}
 
       <Progress width={progressNumber} />
     </Container>
