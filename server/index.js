@@ -2,7 +2,6 @@ const testData = require("./TestData.json");
 const express = require("express");
 const app = express();
 const cors = require("cors");
-const path = require("path");
 
 app.use(express.json());
 app.use(cors());
@@ -15,14 +14,6 @@ app.listen(port, () => {
   console.log("server running");
   console.log(`running on localhost: ${port}`);
 });
-
-// New
-app.use(express.static(path.join(__dirname + "/public")));
-
-app.get("*", (req, rse) => {
-  rse.sendFile(path.resolve(__dirname + "/public/index.html"));
-});
-// New
 
 //Get Data
 // Sort pos
