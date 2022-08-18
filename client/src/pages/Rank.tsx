@@ -3,12 +3,12 @@ import HomeContainer from "../components/HomeContainer";
 
 const Container = styled.div``;
 
-const Practice = () => {
+const Rank = () => {
   return (
     <Container>
-      <HomeContainer practice />
+      <HomeContainer rank practice={false} />
     </Container>
   );
 };
 
-export default Practice;
+export default Rank;

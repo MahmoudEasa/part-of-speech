@@ -31,7 +31,7 @@ const Progress = styled.span`
   top: 0;
   left: 0;
   height: 100%;
-  width: ${(props) => props.width * 10}%;
+  width: ${(props: {width: number}) => props.width * 10}%;
   background-color: #2c8784;
   border-radius: 16px;
 `;

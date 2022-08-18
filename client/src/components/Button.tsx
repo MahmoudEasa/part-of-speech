@@ -1,11 +1,20 @@
 import styled from "styled-components";
-import { useContext } from "react";
+import { SyntheticEvent, useContext } from "react";
 import { HandleClick } from "../ContextApi";
 import { Mobile } from "../responsive/Responsive";
 
+interface Button {
+  disabled: boolean,
+  bgColor: string,
+  radiusNums: string,
+  hover: string,
+  value: string,
+  next: boolean
+};
+
 // Start Styled Components
-const ButtonStyle = styled.button`
-  background-color: ${(props) => props.bgColor};
+const ButtonStyle: any = styled.button`
+  background-color: ${(props: Button) => props.bgColor};
   padding: ${(props) => (props.next ? "10px 50px" : "10px 20px")};
   border: none;
   border-radius: ${(props) => props.radiusNums};
@@ -26,13 +35,15 @@ const ButtonStyle = styled.button`
 `;
 // End Styled Components
 
-const Button = (props) => {
-  const handleClick = useContext(HandleClick);
+
+
+const Button = (props: Button) => {
+  const handleClick: Function = useContext(HandleClick);
 
   return (
     <ButtonStyle
       disabled={props.disabled}
-      onClick={(e) => handleClick(e)}
+      onClick={(e: SyntheticEvent) => handleClick(e)}
       next={props.next}
       bgColor={props.bgColor}
       radiusNums={props.radiusNums}

@@ -10,7 +10,7 @@ import { ContextProgress } from "./ContextApi";
 const Container = styled.div``;
 
 const App = () => {
-  const questionDone = useContext(ContextProgress);
+  const questionDone: number = useContext(ContextProgress);
 
   return (
     <Container>

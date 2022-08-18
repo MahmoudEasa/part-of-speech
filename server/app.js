@@ -1,52 +1,41 @@
-const testData = require("./TestData.json");
-const express = require("express");
-const app = express();
-const cors = require("cors");
-
-app.use(express.json());
-app.use(cors());
-
-// Setup Server
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const TestData_json_1 = __importDefault(require("./TestData.json"));
+const express_1 = __importDefault(require("express"));
+const app = (0, express_1.default)();
+const cors_1 = __importDefault(require("cors"));
+app.use(express_1.default.json());
+app.use((0, cors_1.default)());
 const port = 5000;
-
-//Sign up server
 app.listen(port, () => {
-  console.log("server running");
-  console.log(`running on localhost: ${port}`);
+    console.log("server running");
+    console.log(`running on localhost: ${port}`);
 });
-
-//Get Data
-// Sort pos
-const adjective = testData.wordList.filter((data) => data.pos === "adjective");
-const adverb = testData.wordList.filter((data) => data.pos === "adverb");
-const noun = testData.wordList.filter((data) => data.pos === "noun");
-const verb = testData.wordList.filter((data) => data.pos === "verb");
-
-app.get("/words", (req, res) => {
-  // 10 random data
-  const randomData = [
-    ...adverb.sort(() => 0.5 - Math.random()),
-    ...adjective.sort(() => 0.5 - Math.random()).slice(0, 2),
-    ...noun.sort(() => 0.5 - Math.random()).slice(0, 3),
-    ...verb.sort(() => 0.5 - Math.random()).slice(0, 3),
-  ];
-
-  // Send 10 random items
-  res.send(randomData.sort(() => 0.5 - Math.random()));
+const adjective = TestData_json_1.default.wordList.filter((data) => data.pos === "adjective");
+const adverb = TestData_json_1.default.wordList.filter((data) => data.pos === "adverb");
+const noun = TestData_json_1.default.wordList.filter((data) => data.pos === "noun");
+const verb = TestData_json_1.default.wordList.filter((data) => data.pos === "verb");
+app.get("/words", (_req, res) => {
+    const randomData = [
+        ...adverb,
+        ...adjective.sort(() => 0.5 - Math.random()).slice(0, 2),
+        ...noun.sort(() => 0.5 - Math.random()).slice(0, 3),
+        ...verb.sort(() => 0.5 - Math.random()).slice(0, 3),
+    ];
+    res.send(randomData.sort(() => 0.5 - Math.random()));
 });
-
-//Post Data
 app.post("/rank", (req, res) => {
-  let scoreNum = 0;
-  const score = req.body.score;
-
-  testData.scoresList.map((s) => {
-    if (score > s) {
-      scoreNum++;
-    }
-  });
-
-  // Send The Rank
-  const rank = (scoreNum / 30) * 100;
-  res.status(201).json(+rank.toFixed(2));
+    let scoreNum = 0;
+    const score = req.body.score;
+    TestData_json_1.default.scoresList.map((s) => {
+        if (score > s) {
+            scoreNum++;
+        }
+    });
+    const rank = (scoreNum / 30) * 100;
+    res.status(201).json(+rank.toFixed(2));
 });
+//# sourceMappingURL=app.js.map

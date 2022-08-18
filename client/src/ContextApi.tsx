@@ -1,29 +1,36 @@
-import { useEffect, useState, createContext } from "react";
+import { useEffect, useState, createContext, ReactNode } from "react";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 
-export const ContextProgress = createContext();
-export const ContextData = createContext();
-export const HandleClick = createContext();
-export const HandleDisabled = createContext();
-export const BgColor = createContext();
-export const Rank = createContext();
+export const ContextProgress = createContext<number>(0);
+export const ContextData = createContext<object>({});
+export const HandleClick = createContext<Function >(Function);
+export const HandleDisabled = createContext<boolean>(true);
+export const BgColor = createContext<object>({});
+export const Rank = createContext<number | null>(null);
+export const CorrectAnswers = createContext<number>(0);
 
-const ContextApi = (props) => {
-  const bgColorInitialValue = {
+const ContextApi = (props: {children: ReactNode;}) => {
+  const bgColorInitialValue: {
+    Adjective: string;
+    Adverb: string;
+    Noun: string;
+    Verb: string;
+    hover: string;
+  } = {
     Adjective: "#aedcda",
     Adverb: "#aedcda",
     Noun: "#aedcda",
     Verb: "#aedcda",
     hover: "#29a29e",
   };
-  const [bgColor, setBgColor] = useState(bgColorInitialValue);
-  const [data, setData] = useState([]);
-  const [correctAnswers, setCorrectAnswers] = useState(0);
-  const [rank, setRank] = useState(null);
-  const [question, setQuestion] = useState({});
-  const [questionDone, setQuestionDone] = useState(0);
-  const [disabled, setDisabled] = useState(true);
+  const [bgColor, setBgColor] = useState<object>(bgColorInitialValue);
+  const [data, setData] = useState<object[]>([]);
+  const [correctAnswers, setCorrectAnswers] = useState<number>(0);
+  const [rank, setRank] = useState<number | null>(null);
+  const [question, setQuestion] = useState<any>({});
+  const [questionDone, setQuestionDone] = useState<number>(0);
+  const [disabled, setDisabled] = useState<boolean>(true);
 
   // Get All Data
   useEffect(() => {
@@ -52,9 +59,9 @@ const ContextApi = (props) => {
         })
         .catch(() => toast.error("Cant get data"));
     }
-  }, [questionDone]);
+  }, [correctAnswers, questionDone]);
 
-  const handleClick = (e) => {
+  const handleClick = (e: { target: { innerHTML: string; }; }) : void => {
     // Questions Answer Buttons
     if (
       e.target.innerHTML === "Adjective" ||
@@ -94,7 +101,7 @@ const ContextApi = (props) => {
       // Try Again Button In Quiz Component
     } else if (e.target.innerHTML === "Try Again") {
       // Reload Page to try again
-      window.location.reload(false);
+      window.location.reload();
     }
   };
 
@@ -113,8 +120,10 @@ const ContextApi = (props) => {
               <BgColor.Provider value={bgColor}>
                 {/* Rank */}
                 <Rank.Provider value={rank}>
-                  {/* Add App Component */}
-                  {props.children}
+                  <CorrectAnswers.Provider value={correctAnswers}>
+                    {/* Add App Component */}
+                    {props.children}
+                  </CorrectAnswers.Provider>
                 </Rank.Provider>
               </BgColor.Provider>
             </HandleDisabled.Provider>

@@ -6,7 +6,7 @@ This app was bootstrapped with [Create React App](https://github.com/facebook/cr
 
 ## I Used
 
-* React.js, ContextApi, node.js, and Express.js
+* React.js, ContextApi, node.js, TypeScript, and Express.js
 * Axios, react-toastify, and styled-components
 
 ## To run the app, go to the terminal:

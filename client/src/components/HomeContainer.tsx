@@ -17,7 +17,7 @@ const Container = styled.div`
   height: 70vh;
   box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.1);
   position: relative;
-  ${Mobile({ margin: "20px 0" })}
+  ${Mobile({ margin: "20px 0", justifyContent: "center", gap: "20px" })}
 
   &::before {
     content: "?";
@@ -28,7 +28,7 @@ const Container = styled.div`
     height: 40px;
     background-color: #a47ae2;
     border-radius: 50%;
-    display: ${(props) => (props.practice ? "flex" : "none")};
+    display: ${(props: {practice: boolean}) => (props.practice ? "flex" : "none")};
     justify-content: center;
     align-items: center;
     color: #ffffff;
@@ -52,7 +52,7 @@ const Hr = styled.hr`
 `;
 // End Styled Components
 
-const HomeContainer = (props) => {
+const HomeContainer = (props: {practice: boolean, rank: boolean}) => {
   return (
     <Container practice={props.practice}>
       {/* Practice Page */}
@@ -69,15 +69,15 @@ const HomeContainer = (props) => {
         <>
           <ProgressBar />
           <Hr />
-          <Quiz />
+          <Quiz practice={false} />
           <Hr />
           <ContainerBtn>
             <Button
-              bgColor="#29a29e"
-              radiusNums="20px"
-              value="Try Again"
-              next
-            />
+                bgColor="#29a29e"
+                radiusNums="20px"
+                value="Try Again"
+                next disabled={false} hover={""}
+              />
           </ContainerBtn>
         </>
       )}

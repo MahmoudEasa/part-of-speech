@@ -22,7 +22,7 @@ const ButtonContainer = styled.div`
 // End Styled Components
 
 const ButtonQuiz = () => {
-  const bgColor = useContext(BgColor);
+  const bgColor: any = useContext(BgColor);
   const disabled = useContext(HandleDisabled);
 
   return (
@@ -33,26 +33,26 @@ const ButtonQuiz = () => {
           hover={bgColor.hover}
           radiusNums="20px 0px 0px 20px"
           value="Adjective"
-          disabled={!disabled}
+          disabled={!disabled} next={false}
         />
         <Button
           disabled={!disabled}
           hover={bgColor.hover}
           bgColor={bgColor.Adverb}
-          value="Adverb"
+          value="Adverb" radiusNums={""} next={false}
         />
         <Button
           disabled={!disabled}
           hover={bgColor.hover}
           bgColor={bgColor.Noun}
-          value="Noun"
+          value="Noun" radiusNums={""} next={false}
         />
         <Button
           bgColor={bgColor.Verb}
           hover={bgColor.hover}
           disabled={!disabled}
           radiusNums="0px 20px 20px 0px"
-          value="Verb"
+          value="Verb" next={false}
         />
       </ButtonContainer>
       <Button
@@ -60,7 +60,7 @@ const ButtonQuiz = () => {
         radiusNums="20px"
         value="Next"
         next
-        disabled={disabled}
+        disabled={disabled} hover={""}
       />
     </Container>
   );
