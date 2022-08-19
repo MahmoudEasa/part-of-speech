@@ -47,6 +47,6 @@ app.post("/rank", (req, res) => {
   });
 
   // Send The Rank
-  const rank: number = (scoreNum / 30) * 100;
+  const rank: number = (scoreNum / testData.scoresList.length) * 100;
   res.status(201).json(+rank.toFixed(2));
 });

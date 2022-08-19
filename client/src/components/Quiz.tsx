@@ -59,7 +59,7 @@ const Quiz = (props: {practice: boolean}) => {
       {props.practice && <P>{`Question ${questionNumber + 1} / 10`}</P>}
       <H1>
         {props.practice
-          ? "What is categorizing the word?"
+          ? "What is categorizing this word?"
           : "Questions completed"}
       </H1>
       <H3>
@@ -83,9 +83,9 @@ const Quiz = (props: {practice: boolean}) => {
                 }% `}
               </Span>
             </PAnswers>
-            <Span size="25px">
+            <Span size="30px">
               Your Rank Is:
-              <Span>{` ${rank ? rank : "Loading..."}%`}</Span>
+              <Span>{` ${rank ? rank : "Loading..."}`}</Span>
             </Span>
           </>
         )}
