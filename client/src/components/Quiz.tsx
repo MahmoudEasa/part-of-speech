@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 import { useContext } from "react";
 import {
   ContextData,
@@ -6,9 +6,11 @@ import {
   Rank,
   CorrectAnswers,
 } from "../ContextApi";
+import { Mobile, FlexColumn } from './../responsive/Responsive';
 
 
 // Start Styled Components
+
 const Container = styled.div`
   padding: 20px 50px 0;
   text-align: center;
@@ -29,16 +31,19 @@ const H3 = styled.h3`
   font-size: 20px;
   color: #44bdb9;
   margin: 20px 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  ${FlexColumn}
   gap: 20px;
 `;
 
 const PAnswers = styled.span`
   font-size: 20px;
   color: #545454;
+  ${Mobile({  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+  alignItems: "center",
+  gap: "10px",
+})}
 `;
 
 const Span: any = styled.span`
@@ -54,8 +59,6 @@ const Quiz = (props: {practice: boolean}) => {
   const rank = useContext(Rank);
   const correctAnswers = useContext(CorrectAnswers);
 
-  console.log(correctAnswers);
-  
 
   return (
     <Container>

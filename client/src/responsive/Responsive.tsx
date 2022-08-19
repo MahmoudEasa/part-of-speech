@@ -7,3 +7,11 @@ export const Mobile = (props: any) => {
     }
   `;
 };
+
+
+export const FlexColumn = css`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  `;

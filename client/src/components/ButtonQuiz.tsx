@@ -2,21 +2,17 @@ import styled from "styled-components";
 import Button from "./Button";
 import { useContext } from "react";
 import { BgColor, HandleDisabled } from "../ContextApi";
-import { Mobile } from "../responsive/Responsive";
+import { Mobile, FlexColumn } from "../responsive/Responsive";
 
 // Start Styled Components
 const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+${FlexColumn}
   gap: 20px;
 `;
 
 const ButtonContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+${FlexColumn}
+flex-direction: row;
   ${Mobile({ flexWrap: "wrap", gap: "10px" })}
 `;
 // End Styled Components
