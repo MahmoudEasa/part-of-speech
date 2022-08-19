@@ -54,6 +54,9 @@ const Quiz = (props: {practice: boolean}) => {
   const rank = useContext(Rank);
   const correctAnswers = useContext(CorrectAnswers);
 
+  console.log(correctAnswers);
+  
+
   return (
     <Container>
       {props.practice && <P>{`Question ${questionNumber + 1} / 10`}</P>}
@@ -74,19 +77,16 @@ const Quiz = (props: {practice: boolean}) => {
             <PAnswers>
               Correct Answers:
               <Span size="20px">
-                {` ${correctAnswers ? correctAnswers : "Loading..."} / 10 `}
+                {` ${correctAnswers } / 10 `}
               </Span>
               Your Score Is:
               <Span size="20px">
                 {` ${
-                  correctAnswers ? (correctAnswers / 10) * 100 : "Loading..."
+                   (correctAnswers / 10) * 100 
                 }% `}
               </Span>
             </PAnswers>
-            <Span size="30px">
-              Your Rank Is:
-              <Span>{` ${rank ? rank : "Loading..."}`}</Span>
-            </Span>
+            <Span size="30px">{`Your Rank Is: ${rank}`}</Span>
           </>
         )}
       </H3>

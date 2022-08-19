@@ -7,7 +7,7 @@ export const ContextData = createContext<object>({});
 export const HandleClick = createContext<Function >(Function);
 export const HandleDisabled = createContext<boolean>(true);
 export const BgColor = createContext<object>({});
-export const Rank = createContext<number | null>(null);
+export const Rank = createContext<number | string>("Loading...");
 export const CorrectAnswers = createContext<number>(0);
 
 const ContextApi = (props: {children: ReactNode;}) => {
@@ -27,7 +27,7 @@ const ContextApi = (props: {children: ReactNode;}) => {
   const [bgColor, setBgColor] = useState<object>(bgColorInitialValue);
   const [data, setData] = useState<object[]>([]);
   const [correctAnswers, setCorrectAnswers] = useState<number>(0);
-  const [rank, setRank] = useState<number | null>(null);
+  const [rank, setRank] = useState<number | string>("Loading...");
   const [question, setQuestion] = useState<any>({});
   const [questionDone, setQuestionDone] = useState<number>(0);
   const [disabled, setDisabled] = useState<boolean>(true);
@@ -50,6 +50,7 @@ const ContextApi = (props: {children: ReactNode;}) => {
   // Post Score And Get Rank
   useEffect(() => {
     if (questionDone === 10) {
+
       axios
         .post("http://localhost:5000/rank", {
           score: (correctAnswers / 10) * 100,
