@@ -11,8 +11,9 @@ const Container = styled.div`
 `;
 
 const Img = styled.img`
-  width: 150px;
+  width: 100px;
   cursor: pointer;
+  border-radius: 50%;
 `;
 // Start Styled Components
 
@@ -21,7 +22,7 @@ const Header = () => {
     <Container>
       <Img
         onClick={() => window.location.reload()}
-        src="https://www.tribepost.co.uk/wp-content/uploads/2018/06/Nagwa-Logo.png"
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqEWj9HFaw1BRmAN809eKfq0XPPQoivsrj9A&usqp=CAU"
         alt="logo"
       />
     </Container>
