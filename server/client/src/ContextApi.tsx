@@ -1,6 +1,6 @@
 import { useEffect, useState, createContext, ReactNode } from "react";
-import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
+import { axiosInstance } from "./config";
 
 export const ContextProgress = createContext<number>(0);
 export const ContextData = createContext<object>({});
@@ -34,8 +34,8 @@ const ContextApi = (props: {children: ReactNode;}) => {
 
   // Get All Data
   useEffect(() => {
-    axios
-      .get("http://localhost:5000/words")
+    axiosInstance
+      .get("/words")
       .then((res) => {
         setData(res.data);
         setQuestion(res.data[0]);
@@ -51,8 +51,8 @@ const ContextApi = (props: {children: ReactNode;}) => {
   useEffect(() => {
     if (questionDone === 10) {
 
-      axios
-        .post("http://localhost:5000/rank", {
+      axiosInstance
+        .post("/rank", {
           score: (correctAnswers / 10) * 100,
         })
         .then((res) => {
