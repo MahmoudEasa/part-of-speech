@@ -2,9 +2,6 @@ const testData = require("./TestData.json");
 const express = require("express");
 const path = require("path");
 const cors = require("cors");
-// import express from "express";
-// import path from "path";
-// import cors from "cors";
 const app = express();
 
 app.use(express.json());
@@ -17,12 +14,6 @@ const port = 5000;
 app.listen(process.env.PORT || port, () => {
   console.log("server running");
   console.log(`running on localhost: ${port}`);
-});
-
-app.use(express.static(path.join(__dirname, "/client/build")));
-
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "/client/build", "index.html"));
 });
 
 //Get Data
@@ -59,4 +50,10 @@ app.post("/rank", (req, res) => {
   // Send The Rank
   const rank = (scoreNum / testData.scoresList.length) * 100;
   res.status(201).json(+rank.toFixed(2));
+});
+
+app.use(express.static(path.join(__dirname + "/public")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname + "/public/index.html"));
 });
