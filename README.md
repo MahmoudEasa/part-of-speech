@@ -4,6 +4,9 @@ This app is an interactive activity that helps the students practice categorizin
 
 This app was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+ 
+This app deployed on [Heroku](https://part-of-speetch.herokuapp.com).
+
 ## I Used
 
 * React.js, ContextApi, node.js, TypeScript, and Express.js
